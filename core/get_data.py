@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from urllib.parse import urljoin
 
 import seleniumbase as sb
 from selenium_stealth import stealth
@@ -46,6 +47,7 @@ def parse_page(page_source, products_count: int):
     items = items_body.div.div
     data = []
     idx = 0
+    base_url = 'https://www.ozon.ru'
     for sibling in items:
         if idx >= products_count:
             break
@@ -55,7 +57,8 @@ def parse_page(page_source, products_count: int):
                 'price': int(sibling.a.next_sibling.next_sibling.div.div.span.text.encode('ascii', 'ignore')),
                 'description': sibling.div.a.next_sibling.next_sibling.a.div.span.text,
                 'image_url': sibling.div.select_one('div > img')['src'],
-                'discount': sibling.a.next_sibling.next_sibling.div.div.span.next_sibling.next_sibling.text
+                'discount': sibling.a.next_sibling.next_sibling.div.div.span.next_sibling.next_sibling.text,
+                'url': urljoin(base_url, sibling.a['href'])
             })
             idx += 1
     return data
