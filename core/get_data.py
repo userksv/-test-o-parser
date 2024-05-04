@@ -60,7 +60,7 @@ def parse_page(page_source, products_count: int):
             idx += 1
     return data
 
-def get_data(products_count):
+def get_data_from_website(products_count):
     url = 'https://www.ozon.ru/seller/1/products/'
     page_source = open_url(url)
     return parse_page(page_source, products_count)

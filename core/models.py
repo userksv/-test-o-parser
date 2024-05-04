@@ -7,6 +7,3 @@ class Product(models.Model):
     description = models.CharField(max_length=256)
     image_url = models.CharField(max_length=128)
     discount = models.CharField(max_length=64, null=True, blank=True)
-
-    def __str__(self) -> str:
-        return f'{self.name}'
