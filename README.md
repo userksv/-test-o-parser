@@ -1,5 +1,5 @@
 # -test-o-parser
-    ## Project Setup
+## Project Setup
 
 1. Clone the project repository:
     ```bash
@@ -11,22 +11,32 @@
     pip install -r requirements.txt
     ```
 
-3. Run Redis Docker container:
+3. Run database migrations:
+    ```bash
+    python manage.py migrate
+    ```
+
+4. Create a superuser:
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+5. Run Redis Docker container:
     ```bash
     docker run -d -p 6379:6379 redis
     ```
 
-4. Run the bot:
+6. Run the bot:
     ```bash
     python manage.py bot
     ```
 
-5. Start the Django server:
+7. Start the Django server:
     ```bash
     python manage.py runserver
     ```
 
-6. Run Celery worker:
+8. Run Celery worker:
     ```bash
     celery -A test_project worker --loglevel=INFO
     ```
@@ -49,4 +59,9 @@ http GET localhost:8000/v1/products/{product_id}/
 ### Get all products
 ```
 http GET localhost:8000/v1/products/
+```
+
+## Swagger or ReDoc
+```
+http://localhost:8000/swagger/
 ```
