@@ -9,4 +9,4 @@ class Product(models.Model):
     discount = models.CharField(max_length=64, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f'{self.name} - {self.id}'

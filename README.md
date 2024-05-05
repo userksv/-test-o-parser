@@ -4,6 +4,7 @@ $ pip install -r requirements.txt
 $ docker run -d -p 6379:6379 redis
 $ manage.py bot
 $ manage.py runserver
+$ celery -A test_project worker --loglevel=INFO
 
 endpoints: 
 Use httpie 
