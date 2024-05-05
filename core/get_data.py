@@ -32,7 +32,7 @@ def open_url(url):
     driver.get(url)
     try:
         # ждем пока не появится на странице тэг с id ozonTagManagerApp
-        element = WebDriverWait(driver, 15).until(
+        element = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.ID, "ozonTagManagerApp"))
         )
     finally:
@@ -47,7 +47,7 @@ def parse_page(page_source, products_count: int):
     items = items_body.div.div
     data = []
     idx = 0
-    base_url = 'https://www.ozon.ru'
+    base_url = 'https://www.ozon.ru'    
     for sibling in items:
         if idx >= products_count:
             break
@@ -63,7 +63,16 @@ def parse_page(page_source, products_count: int):
             idx += 1
     return data
 
+
 def get_data_from_website(products_count):
     url = 'https://www.ozon.ru/seller/1/products/'
-    page_source = open_url(url)
-    return parse_page(page_source, products_count)
+    data = []
+    if products_count >= 36:
+        for i in range(1, 3):
+            link = url + f'?page={i}'
+            data.extend(parse_page(open_url(link), products_count))
+    else:
+        data = parse_page(open_url(url), products_count)
+    return data
+
+# print(len(get_data_from_website(46)))

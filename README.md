@@ -1,6 +1,7 @@
 # -test-o-parser
+## Install Mysql, Python 3.xx, Create Telegram Bot and get API Token and ChatID
+### В корне проекта лежит sample.env с инструкциями, после редактирования, необходимио его переименовать в `.env`
 ## Project Setup
-
 1. Clone the project repository:
     ```bash
     git clone https://github.com/userksv/-test-o-parser.git

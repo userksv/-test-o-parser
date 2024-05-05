@@ -11,7 +11,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Тестовое задание для Popso",
       default_version='v1',
-      description="Django Rest API приложение. Пврсинг озон.ру",
+      description="Django Rest API приложение. Парсинг озон.ру",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="contact@snippets.local"),
       license=openapi.License(name="BSD License"),

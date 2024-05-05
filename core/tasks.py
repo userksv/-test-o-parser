@@ -13,10 +13,14 @@ def write_last_added_items(last_added: list):
 @shared_task
 def start_parsing_task(products_count):
     data = get_data_from_website(products_count)
+    i = 0
     for item in data:
         serializer = ProductSerializer(data=item)
         if serializer.is_valid():
+            if i >= products_count:
+                break
             serializer.save()
-    write_last_added_items(data)
-    send_notification_to_telegram(products_count)
+            i += 1
 
+    write_last_added_items(data)
+    send_notification_to_telegram(i)
