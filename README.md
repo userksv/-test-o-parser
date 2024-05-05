@@ -1,18 +1,4 @@
 # -test-o-parser
-pull project from https://github.com/userksv/-test-o-parser.git
-$ pip install -r requirements.txt
-$ docker run -d -p 6379:6379 redis
-$ manage.py bot
-$ manage.py runserver
-$ celery -A test_project worker --loglevel=INFO
-
-endpoints: 
-Use httpie 
-    http POST localhost:8000/v1/products/ products_count=10
-    http GET localhost:8000/v1/products/{product_id}/
-    http GET localhost:8000/v1/products/
-
-
     ## Project Setup
 
 1. Clone the project repository:
@@ -53,3 +39,14 @@ Use [HTTPie](https://httpie.io/) to interact with the API.
 
 ```bash
 http POST localhost:8000/v1/products/ products_count=10
+```
+
+### Get product by id
+```bash
+http GET localhost:8000/v1/products/{product_id}/
+```
+
+### Get all products
+```
+http GET localhost:8000/v1/products/
+```
